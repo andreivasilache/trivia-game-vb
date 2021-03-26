@@ -1,0 +1,12 @@
+C:\Users\User\source\repos\proiect-pv\proiect-pv\bin\Debug\proiect-pv.exe.config
+C:\Users\User\source\repos\proiect-pv\proiect-pv\bin\Debug\proiect-pv.exe
+C:\Users\User\source\repos\proiect-pv\proiect-pv\bin\Debug\proiect-pv.pdb
+C:\Users\User\source\repos\proiect-pv\proiect-pv\bin\Debug\proiect-pv.xml
+C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect-pv.vbprojAssemblyReference.cache
+C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect_pv.Resources.resources
+C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect-pv.vbproj.GenerateResource.cache
+C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect-pv.vbproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect-pv.exe
+C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect-pv.xml
+C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect-pv.pdb
+C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect_pv.Main.resources
