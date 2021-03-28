@@ -10,3 +10,8 @@ C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect-pv.exe
 C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect-pv.xml
 C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect-pv.pdb
 C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect_pv.Main.resources
+C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect_pv.LandingPage.resources
+C:\Users\User\source\repos\proiect-pv\proiect-pv\bin\Debug\Json.Net.dll
+C:\Users\User\source\repos\proiect-pv\proiect-pv\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User\source\repos\proiect-pv\proiect-pv\bin\Debug\Newtonsoft.Json.xml
+C:\Users\User\source\repos\proiect-pv\proiect-pv\obj\Debug\proiect-pv.vbproj.CopyComplete
