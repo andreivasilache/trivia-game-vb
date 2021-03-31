@@ -35,7 +35,7 @@ Partial Class LandingPage
         Me.title.AutoSize = True
         Me.title.Font = New System.Drawing.Font("Roboto Medium", 30.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.title.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.title.Location = New System.Drawing.Point(141, 82)
+        Me.title.Location = New System.Drawing.Point(148, 84)
         Me.title.Name = "title"
         Me.title.Size = New System.Drawing.Size(117, 48)
         Me.title.TabIndex = 0
@@ -45,7 +45,7 @@ Partial Class LandingPage
         '
         Me.subtitle.AutoSize = True
         Me.subtitle.Font = New System.Drawing.Font("Roboto Thin", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.subtitle.Location = New System.Drawing.Point(101, 175)
+        Me.subtitle.Location = New System.Drawing.Point(110, 176)
         Me.subtitle.Name = "subtitle"
         Me.subtitle.Size = New System.Drawing.Size(204, 33)
         Me.subtitle.TabIndex = 2
@@ -55,7 +55,7 @@ Partial Class LandingPage
         '
         Me.subtitle1.AutoSize = True
         Me.subtitle1.Font = New System.Drawing.Font("Roboto Thin", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.subtitle1.Location = New System.Drawing.Point(121, 208)
+        Me.subtitle1.Location = New System.Drawing.Point(130, 209)
         Me.subtitle1.Name = "subtitle1"
         Me.subtitle1.Size = New System.Drawing.Size(151, 33)
         Me.subtitle1.TabIndex = 3

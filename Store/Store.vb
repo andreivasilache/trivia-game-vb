@@ -43,10 +43,6 @@ Public Class Store
         Return numberOfSeconds
     End Function
 
-    Public Function decreaseNumberOfSeconds() As Integer
-        numberOfSeconds = numberOfSeconds - 1
-    End Function
-
     Public Function resetPoints()
         currentPoints = 0
     End Function
@@ -61,6 +57,28 @@ Public Class Store
 
     Public Function getRemainingLifes() As Integer
         Return remainedLifes
+    End Function
+
+    Public Function decreaseNumberOfSeconds() As Boolean
+        If (numberOfSeconds > 0) Then
+            numberOfSeconds = numberOfSeconds - 1
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function increaseNumberOfPoints()
+        currentPoints = currentPoints + 1
+    End Function
+
+    Public Function decreaseNumberOfLifes() As Boolean
+        If (remainedLifes > 0) Then
+            remainedLifes = remainedLifes - 1
+            Return True
+        Else
+            Return False
+        End If
     End Function
 
 End Class

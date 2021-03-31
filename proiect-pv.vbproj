@@ -110,7 +110,7 @@
       <DependentUpon>Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Services\QuestionsService.vb" />
+    <Compile Include="Services\QuestionsHTTPService.vb" />
     <Compile Include="Store\Store.vb" />
     <Compile Include="Store\StoreInstance.vb" />
     <Compile Include="Utils\Fonts-Loader.vb" />

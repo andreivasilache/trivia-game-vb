@@ -129,19 +129,7 @@
   <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>426, 17</value>
   </metadata>
-  <data name="option_1.Text" xml:space="preserve">
-    <value>The Str function recognizes only the period ( . ) as a valid decimal separator. When different decimal separators may be used (for example, in international applications), use CStr to convert a number to a string.</value>
-  </data>
-  <data name="Button1.Text" xml:space="preserve">
-    <value>The Str function recognizes only the period ( . ) as a valid decimal separator. When different decimal separators may be used (for example, in international applications), use CStr to convert a number to a string.</value>
-  </data>
-  <data name="option_2.Text" xml:space="preserve">
-    <value>The Str function recognizes only the period ( . ) as a valid decimal separator. When different decimal separators may be used (for example, in international applications), use CStr to convert a number to a string.</value>
-  </data>
-  <data name="option_3.Text" xml:space="preserve">
-    <value>The Str function recognizes only the period ( . ) as a valid decimal separator. When different decimal separators may be used (for example, in international applications), use CStr to convert a number to a string.</value>
-  </data>
-  <data name="option_4.Text" xml:space="preserve">
-    <value>The Str function recognizes only the period ( . ) as a valid decimal separator. When different decimal separators may be used (for example, in international applications), use CStr to convert a number to a string.</value>
-  </data>
+  <metadata name="Timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>515, 17</value>
+  </metadata>
 </root>
