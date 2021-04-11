@@ -1,8 +1,13 @@
 ﻿Imports System.Runtime.InteropServices
 
+'todo: 
+' disable click event when correct answer is displayed (after choosing wrong ans)
+' when game is over and user selects another levels reload game data
+
 Public Class Main
     Private localFontsInstance As FontsCore
     Private questionServiceInstance As QuestionsHTTPService
+    Private blockClickEvents = False
 
     '  Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
 
@@ -43,6 +48,7 @@ Public Class Main
             button.Enabled = True
             index = index + 1
         Next
+        blockClickEvents = False
     End Function
 
     Private Function LoadQuestions()
@@ -64,10 +70,10 @@ Public Class Main
         For Each button In answerButtons
             If questionServiceInstance.isCurrectAnswer(button.Text) Then
                 button.Visible = True
-                button.Enabled = False
             Else
                 button.Visible = False
             End If
+            blockClickEvents = True
         Next
     End Function
 
@@ -77,33 +83,34 @@ Public Class Main
         End If
         Refresh()
         sleepApp()
-        Threading.Thread.Sleep(5000)
         LoadQuestions()
         toBeDisplayedMessage = ""
     End Function
 
 
     Private Function HandleButtonClick(sender As Object, e As EventArgs)
-        If (questionServiceInstance.isCurrectAnswer(sender.text)) Then
-            StoreInstance.instance.increaseNumberOfPoints()
-            StoreInstance.instance.resetNumberOfSeconds()
-
-            toBeDisplayedMessage = "Correct!"
-            onUIReload()
-        Else
-            If (StoreInstance.instance.decreaseNumberOfLifes()) Then
+        If Not blockClickEvents Then
+            If (questionServiceInstance.isCurrectAnswer(sender.text)) Then
+                StoreInstance.instance.increaseNumberOfPoints()
                 StoreInstance.instance.resetNumberOfSeconds()
-                toBeDisplayedMessage = "Wrong!"
-                onUIReload(True)
-            Else
-                onGameOver()
-            End If
 
+                toBeDisplayedMessage = "Correct!"
+                onUIReload()
+            Else
+                If (StoreInstance.instance.decreaseNumberOfLifes()) Then
+                    StoreInstance.instance.resetNumberOfSeconds()
+                    toBeDisplayedMessage = "Wrong!"
+                    onUIReload(True)
+                Else
+                    onGameOver()
+                End If
+
+            End If
         End If
     End Function
 
     Private Function sleepApp()
-        Threading.Thread.Sleep(3500)
+        Threading.Thread.Sleep(3000)
     End Function
 
 
