@@ -12,6 +12,8 @@ Public Class QuestionsHTTPService
     Private r As Object
 
     Public Function fetchNewData()
+        answers.Clear()
+
         Dim endpoint = "https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple"
         Dim rawRes As String = webClient.DownloadString(endpoint)
         Dim JSONresponse = JObject.Parse(rawRes)
@@ -28,13 +30,18 @@ Public Class QuestionsHTTPService
                         correctAnswer = correctAns
                         answers.Add(correctAnswer)
 
+
                         For Each wrongAnswer As String In result("incorrect_answers")
                             answers.Add(wrongAnswer)
+                            '  Console.WriteLine(wrongAnswer.ToString())
+
                         Next
                         ShuffleAnswers()
                     Next
             End Select
         Next
+        '  Console.WriteLine(correctAnswer.ToString())
+
     End Function
 
     Private Function Shuffle(ByVal item As List(Of String)) As List(Of String)

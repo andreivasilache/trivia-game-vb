@@ -3,6 +3,7 @@
 Public Class Main
     Private localFontsInstance As FontsCore
     Private questionServiceInstance As QuestionsHTTPService
+
     '  Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
 
     Private Function LoadUIFonts()
@@ -31,31 +32,23 @@ Public Class Main
 
 
     Private Function updateCoreView()
+        Dim answerButtons = {option_1, option_2, option_3, option_4}
         question.Text = questionServiceInstance.getQuestion()
         category.Text = "Category: " + questionServiceInstance.getCategory()
-        option_1.Text = questionServiceInstance.getAnswer(0)
-        option_2.Text = questionServiceInstance.getAnswer(1)
-        option_3.Text = questionServiceInstance.getAnswer(2)
-        option_4.Text = questionServiceInstance.getAnswer(3)
+
+        Dim index = 0
+        For Each button In answerButtons
+            button.Text = questionServiceInstance.getAnswer(index)
+            button.Visible = True
+            button.Enabled = True
+            index = index + 1
+        Next
     End Function
 
     Private Function LoadQuestions()
         questionServiceInstance.fetchNewData()
         updateCoreView()
     End Function
-
-    Private Function DelayWithTimer(delay As Integer, action As Action)
-        Dim localTimer = New System.Windows.Forms.Timer()
-        localTimer.Interval = delay
-        AddHandler localTimer.Tick,
-        Sub()
-            action.Invoke()
-            localTimer.Enabled = False
-            localTimer.Dispose()
-        End Sub
-        localTimer.Enabled = True
-    End Function
-
 
 
     Private toBeDisplayedMessage = ""
@@ -66,8 +59,25 @@ Public Class Main
     End Sub
 
 
-    Private Function onUIReload()
-        ' Sleep(1000)
+    Private Function UpdateCorrectAnswerUI()
+        Dim answerButtons = {option_1, option_2, option_3, option_4}
+        For Each button In answerButtons
+            If questionServiceInstance.isCurrectAnswer(button.Text) Then
+                button.Visible = True
+                button.Enabled = False
+            Else
+                button.Visible = False
+            End If
+        Next
+    End Function
+
+    Private Function onUIReload(Optional displayCurrentAnswer As Boolean = False)
+        If displayCurrentAnswer Then
+            UpdateCorrectAnswerUI()
+        End If
+        Refresh()
+        sleepApp()
+        Threading.Thread.Sleep(5000)
         LoadQuestions()
         toBeDisplayedMessage = ""
     End Function
@@ -76,12 +86,15 @@ Public Class Main
     Private Function HandleButtonClick(sender As Object, e As EventArgs)
         If (questionServiceInstance.isCurrectAnswer(sender.text)) Then
             StoreInstance.instance.increaseNumberOfPoints()
+            StoreInstance.instance.resetNumberOfSeconds()
+
             toBeDisplayedMessage = "Correct!"
             onUIReload()
         Else
             If (StoreInstance.instance.decreaseNumberOfLifes()) Then
+                StoreInstance.instance.resetNumberOfSeconds()
                 toBeDisplayedMessage = "Wrong!"
-                onUIReload()
+                onUIReload(True)
             Else
                 onGameOver()
             End If
@@ -89,10 +102,19 @@ Public Class Main
         End If
     End Function
 
+    Private Function sleepApp()
+        Threading.Thread.Sleep(3500)
+    End Function
+
+
     Private Function onGameOver()
         toBeDisplayedMessage = "Game over!"
         Timer1.Stop()
-        Invalidate()
+        Refresh()
+        sleepApp()
+        Me.Hide()
+        LandingPage.Show()
+
     End Function
 
     Private Function onTimeExpire()
@@ -103,8 +125,8 @@ Public Class Main
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If (StoreInstance.instance.decreaseNumberOfSeconds()) Then
-            'Invalidate is used to refresh de UI
-            Invalidate()
+            'Refresh UI content
+            Refresh()
         Else
             onTimeExpire()
         End If

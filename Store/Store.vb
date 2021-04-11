@@ -9,6 +9,7 @@ Public Class Store
     Private currentPoints As Integer = 0
     Private remainedLifes As Integer = 0
     Private numberOfSeconds As Integer = 0
+    Private currentLevelNumberOfSeconds = 0
 
     Private Function getLevelNumberOfSecondsByDifficulty(difficulty As DifficultiesENUM) As Integer
         Select Case difficulty
@@ -35,8 +36,13 @@ Public Class Store
 
     Public Function updateDifficulty(newDifficulty As DifficultiesENUM)
         currentDifficulty = newDifficulty
+        currentLevelNumberOfSeconds = getLevelNumberOfSecondsByDifficulty(newDifficulty)
         numberOfSeconds = getLevelNumberOfSecondsByDifficulty(newDifficulty)
         remainedLifes = getLevelNumberOfLifes(newDifficulty)
+    End Function
+
+    Public Function resetNumberOfSeconds()
+        numberOfSeconds = currentLevelNumberOfSeconds
     End Function
 
     Public Function getCurrentNumberOfSeconds() As Integer
