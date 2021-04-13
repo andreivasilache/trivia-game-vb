@@ -48,7 +48,6 @@ Public Class Main
             button.Enabled = True
             index = index + 1
         Next
-        blockClickEvents = False
     End Function
 
     Private Function LoadQuestions()
@@ -73,7 +72,8 @@ Public Class Main
             Else
                 button.Visible = False
             End If
-            blockClickEvents = True
+            button.Enabled = False
+
         Next
     End Function
 
@@ -89,24 +89,25 @@ Public Class Main
 
 
     Private Function HandleButtonClick(sender As Object, e As EventArgs)
-        If Not blockClickEvents Then
-            If (questionServiceInstance.isCurrectAnswer(sender.text)) Then
-                StoreInstance.instance.increaseNumberOfPoints()
+        ' Console.WriteLine(blockClickEvents)
+        ' If Not blockClickEvents Then
+        If (questionServiceInstance.isCurrectAnswer(sender.text)) Then
+            StoreInstance.instance.increaseNumberOfPoints()
+            StoreInstance.instance.resetNumberOfSeconds()
+
+            toBeDisplayedMessage = "Correct!"
+            onUIReload()
+        Else
+            If (StoreInstance.instance.decreaseNumberOfLifes()) Then
                 StoreInstance.instance.resetNumberOfSeconds()
-
-                toBeDisplayedMessage = "Correct!"
-                onUIReload()
+                toBeDisplayedMessage = "Wrong!"
+                onUIReload(True)
             Else
-                If (StoreInstance.instance.decreaseNumberOfLifes()) Then
-                    StoreInstance.instance.resetNumberOfSeconds()
-                    toBeDisplayedMessage = "Wrong!"
-                    onUIReload(True)
-                Else
-                    onGameOver()
-                End If
-
+                onGameOver()
             End If
+
         End If
+        ' End If
     End Function
 
     Private Function sleepApp()
@@ -118,6 +119,8 @@ Public Class Main
         toBeDisplayedMessage = "Game over!"
         Timer1.Stop()
         Refresh()
+        StoreInstance.instance.resetValues()
+        toBeDisplayedMessage = ""
         sleepApp()
         Me.Hide()
         LandingPage.Show()

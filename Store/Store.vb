@@ -11,25 +11,27 @@ Public Class Store
     Private numberOfSeconds As Integer = 0
     Private currentLevelNumberOfSeconds = 0
 
+
+
     Private Function getLevelNumberOfSecondsByDifficulty(difficulty As DifficultiesENUM) As Integer
         Select Case difficulty
             Case DifficultiesENUM.easy
-                Return 60
-            Case DifficultiesENUM.medium
-                Return 45
-            Case DifficultiesENUM.hard
                 Return 30
+            Case DifficultiesENUM.medium
+                Return 20
+            Case DifficultiesENUM.hard
+                Return 10
         End Select
     End Function
 
     Private Function getLevelNumberOfLifes(difficulty As DifficultiesENUM) As Integer
         Select Case difficulty
             Case DifficultiesENUM.easy
-                Return 4
-            Case DifficultiesENUM.medium
                 Return 3
-            Case DifficultiesENUM.hard
+            Case DifficultiesENUM.medium
                 Return 2
+            Case DifficultiesENUM.hard
+                Return 1
         End Select
     End Function
 
@@ -79,12 +81,20 @@ Public Class Store
     End Function
 
     Public Function decreaseNumberOfLifes() As Boolean
-        If (remainedLifes > 0) Then
+        If (remainedLifes > 1) Then
             remainedLifes = remainedLifes - 1
             Return True
         Else
             Return False
         End If
+    End Function
+
+    Public Function resetValues()
+        currentDifficulty = DifficultiesENUM.easy
+        currentPoints = 0
+        remainedLifes = 0
+        numberOfSeconds = 0
+        currentLevelNumberOfSeconds = 0
     End Function
 
 End Class

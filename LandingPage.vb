@@ -31,7 +31,10 @@
         End Select
 
         Me.Hide()
-        Main.Show()
+        ' create new instance in order to 'load' method be called
+        Using mainForm As New Main
+            mainForm.ShowDialog()
+        End Using
 
     End Function
 
